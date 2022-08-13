@@ -1,0 +1,5 @@
+org\example\Solver.class
+org\example\Trie\Trie.class
+org\example\Main.class
+org\example\CsvParser.class
+org\example\Trie\Node.class
