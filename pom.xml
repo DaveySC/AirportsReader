@@ -11,8 +11,6 @@
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>cp1251</project.build.sourceEncoding>
-        <project.reporting.outputEncoding>cp1251</project.reporting.outputEncoding>
     </properties>
 
     <build>

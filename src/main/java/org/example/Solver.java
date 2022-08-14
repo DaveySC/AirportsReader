@@ -57,7 +57,22 @@ public class Solver {
             System.out.println("Не удалось прочесть байт из файла");
             System.exit(1);
         }
+    }
 
+    private void readLineWithBuffer() {
+        try {
+            byte[] buffer = new byte[1024];
+            randomAccessFile.read(buffer);
+            int i = 0;
+            char c;
+            while ((c = (char) buffer[i]) != '\n') {
+                line.add(c);
+                i++;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void clearLine() {
@@ -87,7 +102,7 @@ public class Solver {
             int counter = 0;
             for (Long offset : trie.findAllWordsOffsetsByPrefix(prefix)) {
                 randomAccessFile.seek(offset);
-                readLine();
+                readLineWithBuffer();
                 printLine();
                 clearLine();
                 counter++;
