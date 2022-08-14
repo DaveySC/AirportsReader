@@ -83,7 +83,6 @@ public class Trie {
         if (node.getChildren() == null) {
             return;
         }
-
         for (Node child : node.getChildren()) {
             findAllWordsOffsetsFromNode(child);
         }

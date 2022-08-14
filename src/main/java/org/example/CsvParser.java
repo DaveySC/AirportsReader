@@ -14,14 +14,18 @@ public class CsvParser {
 
     private Queue<Character> parsedLine = new ArrayDeque<>();
 
+    private boolean isColumnContainsOnlyString = false;
+
     public Queue<Character> parse(List<Character> line) {
         parsedLine.clear();
+        isColumnContainsOnlyString = false;
         int i = getDividerPosition(line);
+        if (i == -1) {
+            System.out.println("Введён неправильный номер колонки");
+            System.exit(1);
+        }
         while (i < line.size() && line.get(i) != ',') {
-            if (line.get(i) == '"') {
-                i++;
-                continue;
-            }
+            if (line.get(i) == '"') isColumnContainsOnlyString = true;
             parsedLine.add(Character.toLowerCase(line.get(i)));
             i += 1;
         }
@@ -32,12 +36,15 @@ public class CsvParser {
         int k = 0;
         for (int i = 0; i < list.size(); i++) {
             if (k == column) {
-                k = i;
-                break;
+                return i;
             }
             if (list.get(i) == ',') k++;
         }
-        return k;
+        return -1;
+    }
+
+    public boolean isColumnContainsOnlyString() {
+        return isColumnContainsOnlyString;
     }
 
 }

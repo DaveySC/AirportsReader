@@ -1,6 +1,5 @@
 package org.example.Trie;
 
-import java.util.Comparator;
 import java.util.List;
 
 class Node implements Comparable<Node> {
